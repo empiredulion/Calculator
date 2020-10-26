@@ -277,6 +277,11 @@ public class MainActivity extends AppCompatActivity {
                     expres.set(expres.size()-1, "-");
                     operand.setText(operand.getText().toString().substring(0,operand.getText().toString().length() - 1));
                     operand.append("-");
+                } else if (Objects.equals(lastButt[0], "=")) {
+                    operand.setText("");
+                    operand.append(result.getText());
+                    operand.append("-");
+                    expres.add("-");
                 } else {
                     expres.add(result.getText().toString());
                     operand.append(result.getText());
@@ -300,6 +305,11 @@ public class MainActivity extends AppCompatActivity {
                     expres.set(expres.size()-1, "*");
                     operand.setText(operand.getText().toString().substring(0,operand.getText().toString().length() - 1));
                     operand.append("*");
+                } else if (Objects.equals(lastButt[0], "=")) {
+                    operand.setText("");
+                    operand.append(result.getText());
+                    operand.append("*");
+                    expres.add("*");
                 } else {
                     expres.add(result.getText().toString());
                     operand.append(result.getText());
@@ -323,6 +333,11 @@ public class MainActivity extends AppCompatActivity {
                     expres.set(expres.size()-1, "/");
                     operand.setText(operand.getText().toString().substring(0,operand.getText().toString().length() - 1));
                     operand.append("/");
+                } else if (Objects.equals(lastButt[0], "=")) {
+                    operand.setText("");
+                    operand.append(result.getText());
+                    operand.append("/");
+                    expres.add("/");
                 } else {
                     expres.add(result.getText().toString());
                     operand.append(result.getText());
@@ -360,8 +375,6 @@ public class MainActivity extends AppCompatActivity {
                 Log.v("mytag", "" + isZero);
                 if (!isZero) {
                     for (int i = 1; i < expres.size() - 1; i++) {
-                        Log.d("mytag", "Size: " + Integer.toString(expres.size()));
-                        Log.d("mytag", "i = " + Integer.toString(i));
                         Log.d("mytag", Arrays.toString(expres.toArray()));
                         if (Objects.equals(expres.get(i), "*")) {
                             expres.set(i - 1, Double.toString(Double.parseDouble(expres.get(i - 1)) * Double.parseDouble(expres.get(i + 1))));
