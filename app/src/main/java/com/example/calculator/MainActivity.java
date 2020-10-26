@@ -240,114 +240,138 @@ public class MainActivity extends AppCompatActivity {
             @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             @Override
             public void onClick(View view) {
-                if (Objects.equals(lastButt[0], "+") ||
-                        Objects.equals(lastButt[0], "-") ||
-                        Objects.equals(lastButt[0], "*") ||
-                        Objects.equals(lastButt[0], "/")) {
-                    expres.set(expres.size()-1, "+");
-                    operand.setText(operand.getText().toString().substring(0,operand.getText().toString().length() - 1));
-                    operand.append("+");
+                    if (Objects.equals(lastButt[0], "+") ||
+                            Objects.equals(lastButt[0], "-") ||
+                            Objects.equals(lastButt[0], "*") ||
+                            Objects.equals(lastButt[0], "/")) {
+                        expres.set(expres.size() - 1, "+");
+                        operand.setText(operand.getText().toString().substring(0, operand.getText().toString().length() - 1));
+                        operand.append("+");
+                    }
+                    else if (Objects.equals(lastButt[0], "=")) {
+                        if (Objects.equals(result.getText().toString(), "ERROR")) {
+                            expres.clear();
+                            expres.add("0");
+                            expres.add("0");
+                            result.setText("0");
+                        }
+                        operand.setText("");
+                        operand.append(result.getText());
+                        operand.append("+");
+                        expres.add("+");
+                    } else {
+                        expres.add(result.getText().toString());
+                        operand.append(result.getText());
+                        operand.append("+");
+                        expres.add("+");
+                    }
+                    result.setText("0");
+                    Log.d("mytag", Arrays.toString(expres.toArray()));
+                    lastButt[0] = "+";
                 }
-                else if (Objects.equals(lastButt[0], "=")) {
-                    operand.setText("");
-                    operand.append(result.getText());
-                    operand.append("+");
-                    expres.add("+");
-                }
-                else {
-                    expres.add(result.getText().toString());
-                    operand.append(result.getText());
-                    operand.append("+");
-                    expres.add("+");
-                }
-                result.setText("0");
-                Log.d("mytag", Arrays.toString(expres.toArray()));
-                lastButt[0] = "+";
-            }
         });
 
         findViewById(R.id.buttonSub).setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             @Override
             public void onClick(View view) {
-                if (Objects.equals(lastButt[0], "+") ||
-                        Objects.equals(lastButt[0], "-") ||
-                        Objects.equals(lastButt[0], "*") ||
-                        Objects.equals(lastButt[0], "/")) {
-                    expres.set(expres.size()-1, "-");
-                    operand.setText(operand.getText().toString().substring(0,operand.getText().toString().length() - 1));
-                    operand.append("-");
-                } else if (Objects.equals(lastButt[0], "=")) {
-                    operand.setText("");
-                    operand.append(result.getText());
-                    operand.append("-");
-                    expres.add("-");
-                } else {
-                    expres.add(result.getText().toString());
-                    operand.append(result.getText());
-                    operand.append("-");
-                    expres.add("-");
+                    if (Objects.equals(lastButt[0], "+") ||
+                            Objects.equals(lastButt[0], "-") ||
+                            Objects.equals(lastButt[0], "*") ||
+                            Objects.equals(lastButt[0], "/")) {
+                        expres.set(expres.size() - 1, "-");
+                        operand.setText(operand.getText().toString().substring(0, operand.getText().toString().length() - 1));
+                        operand.append("-");
+                    } else if (Objects.equals(lastButt[0], "=")) {
+                        if (Objects.equals(result.getText().toString(), "ERROR")) {
+                            expres.clear();
+                            expres.add("0");
+                            expres.add("0");
+                            result.setText("0");
+                        }
+                        operand.setText("");
+                        operand.append(result.getText());
+                        operand.append("-");
+                        expres.add("-");
+                    } else {
+                        expres.add(result.getText().toString());
+                        operand.append(result.getText());
+                        operand.append("-");
+                        expres.add("-");
+                    }
+                    result.setText("0");
+                    Log.d("mytag", Arrays.toString(expres.toArray()));
+                    lastButt[0] = "-";
                 }
-                result.setText("0");
-                Log.d("mytag", Arrays.toString(expres.toArray()));
-                lastButt[0] = "-";
-            }
         });
 
         findViewById(R.id.buttonMul).setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             @Override
             public void onClick(View view) {
-                if (Objects.equals(lastButt[0], "+") ||
-                        Objects.equals(lastButt[0], "-") ||
-                        Objects.equals(lastButt[0], "*") ||
-                        Objects.equals(lastButt[0], "/")) {
-                    expres.set(expres.size()-1, "*");
-                    operand.setText(operand.getText().toString().substring(0,operand.getText().toString().length() - 1));
-                    operand.append("*");
-                } else if (Objects.equals(lastButt[0], "=")) {
-                    operand.setText("");
-                    operand.append(result.getText());
-                    operand.append("*");
-                    expres.add("*");
-                } else {
-                    expres.add(result.getText().toString());
-                    operand.append(result.getText());
-                    operand.append("*");
-                    expres.add("*");
+                    if (Objects.equals(lastButt[0], "+") ||
+                            Objects.equals(lastButt[0], "-") ||
+                            Objects.equals(lastButt[0], "*") ||
+                            Objects.equals(lastButt[0], "/")) {
+                        expres.set(expres.size() - 1, "*");
+                        operand.setText(operand.getText().toString().substring(0, operand.getText().toString().length() - 1));
+                        operand.append("*");
+                    } else if (Objects.equals(lastButt[0], "=")) {
+                        if (Objects.equals(result.getText().toString(), "ERROR")) {
+                            expres.clear();
+                            expres.add("0");
+                            expres.add("0");
+                            result.setText("0");
+                        }
+                        operand.setText("");
+                        operand.append(result.getText());
+                        operand.append("*");
+                        expres.add("*");
+                    } else {
+                        expres.add(result.getText().toString());
+                        operand.append(result.getText());
+                        operand.append("*");
+                        expres.add("*");
+                    }
+                    result.setText("0");
+                    Log.d("mytag", Arrays.toString(expres.toArray()));
+                    lastButt[0] = "*";
                 }
-                result.setText("0");
-                Log.d("mytag", Arrays.toString(expres.toArray()));
-                lastButt[0] = "*";
-            }
         });
 
         findViewById(R.id.buttonDiv).setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             @Override
             public void onClick(View view) {
-                if (Objects.equals(lastButt[0], "+") ||
-                        Objects.equals(lastButt[0], "-") ||
-                        Objects.equals(lastButt[0], "*") ||
-                        Objects.equals(lastButt[0], "/")) {
-                    expres.set(expres.size()-1, "/");
-                    operand.setText(operand.getText().toString().substring(0,operand.getText().toString().length() - 1));
-                    operand.append("/");
-                } else if (Objects.equals(lastButt[0], "=")) {
-                    operand.setText("");
-                    operand.append(result.getText());
-                    operand.append("/");
-                    expres.add("/");
-                } else {
-                    expres.add(result.getText().toString());
-                    operand.append(result.getText());
-                    operand.append("/");
-                    expres.add("/");
-                }
-                result.setText("0");
-                Log.d("mytag", Arrays.toString(expres.toArray()));
-                lastButt[0] = "/";
-            }
+                    if (Objects.equals(lastButt[0], "+") ||
+                            Objects.equals(lastButt[0], "-") ||
+                            Objects.equals(lastButt[0], "*") ||
+                            Objects.equals(lastButt[0], "/")) {
+                        expres.set(expres.size() - 1, "/");
+                        operand.setText(operand.getText().toString().substring(0, operand.getText().toString().length() - 1));
+                        operand.append("/");
+                    }
+                        else if (Objects.equals(lastButt[0], "=")) {
+                        if (Objects.equals(result.getText().toString(), "ERROR")) {
+                            expres.clear();
+                            expres.add("0");
+                            expres.add("0");
+                            result.setText("0");
+                        }
+                            operand.setText("");
+                            operand.append(result.getText());
+                            operand.append("/");
+                            expres.add("/");
+                        } else {
+                            expres.add(result.getText().toString());
+                            operand.append(result.getText());
+                            operand.append("/");
+                            expres.add("/");
+                        }
+                        result.setText("0");
+                        Log.d("mytag", Arrays.toString(expres.toArray()));
+                        lastButt[0] = "/";
+                    }
         });
 
         findViewById(R.id.buttonEqual).setOnClickListener(new View.OnClickListener() {
